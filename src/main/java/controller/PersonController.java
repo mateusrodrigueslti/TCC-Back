@@ -18,14 +18,14 @@ public class PersonController {
     @ResponseBody
     public Person save(@RequestBody Person person){
 
-        return this.personRepository.save(person);
+        return personRepository.save(person);
     }
 
     @RequestMapping(value = "/person", method = RequestMethod.GET)
     @ResponseBody
     public List<Person> getAll(){
 
-        return (List<Person>) this.personRepository.findAll();
+        return (List<Person>) personRepository.findAll();
     }
 
 }

@@ -1,6 +1,5 @@
 package entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,9 +14,8 @@ import java.util.Date;
 @Table(name = "person")
 public class Person implements Serializable {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -45,7 +43,27 @@ public class Person implements Serializable {
     @Column
     private String phone;
 
+    @Column
+    private String fathersName;
+
+    @Column
+    private String mothersName;
+
+    @Column
+    private String nationality;
+
+    @Column
+    private String naturalness;
+
+    @Column(columnDefinition = "TEXT")
+    private String criminalPattern;
+
+    //@OneToOne(fetch = FetchType.EAGER)
+    //@MapsId
+    //private CriminalPattern criminalPattern;
+
     @OneToOne(fetch = FetchType.EAGER)
     @MapsId
     private Address address;
+
 }

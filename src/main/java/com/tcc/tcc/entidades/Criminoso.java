@@ -1,5 +1,5 @@
 package com.tcc.tcc.entidades;
-
+ 
 import java.io.Serializable;
 import java.util.Date;
 

@@ -1,5 +1,5 @@
 package com.tcc.tcc.entidades;
-
+  
 import lombok.Data;
 
 @Data

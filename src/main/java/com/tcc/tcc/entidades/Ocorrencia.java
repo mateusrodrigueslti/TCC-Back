@@ -1,5 +1,5 @@
 package com.tcc.tcc.entidades;
-
+ 
 import java.util.Date;
 
 import javax.persistence.CascadeType;

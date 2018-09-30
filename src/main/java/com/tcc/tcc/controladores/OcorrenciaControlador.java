@@ -1,5 +1,5 @@
 package com.tcc.tcc.controladores;
- 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tcc.tcc.entidades.Criminoso;
-import com.tcc.tcc.repositorios.CriminosoRepositorio;
+import com.tcc.tcc.entidades.Ocorrencia;
+import com.tcc.tcc.repositorios.OcorrenciaRepositorio;
 
 @CrossOrigin("*")
 @RestController
 public class OcorrenciaControlador {
 
 	@Autowired
-	private CriminosoRepositorio criminosoReposiorio;
+	private OcorrenciaRepositorio ocorrenciaReposiorio;
 	
-    @RequestMapping(value = "/criminoso", method = RequestMethod.POST)
+    @RequestMapping(value = "/ocorrencia", method = RequestMethod.POST)
     @ResponseBody
-    public Criminoso save(@RequestBody Criminoso criminoso){
+    public Ocorrencia save(@RequestBody Ocorrencia ocorrencia){
 
-        return criminosoReposiorio.save(criminoso);
+        return ocorrenciaReposiorio.save(ocorrencia);
     }
 
-    @RequestMapping(value = "/criminoso", method = RequestMethod.GET)
+    @RequestMapping(value = "/ocorrencia", method = RequestMethod.GET)
     @ResponseBody
-    public List<Criminoso> getAll(){
+    public List<Ocorrencia> getAll(){
 
-        return (List<Criminoso>) criminosoReposiorio.findAll();
+        return (List<Ocorrencia>) ocorrenciaReposiorio.findAll();
     }
 }

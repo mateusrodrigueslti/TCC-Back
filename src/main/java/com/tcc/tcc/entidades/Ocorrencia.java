@@ -1,6 +1,7 @@
 package com.tcc.tcc.entidades;
- 
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -34,10 +36,11 @@ public class Ocorrencia {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
-    @Temporal(TemporalType.DATE)
-    private Date data;
+	@DateTimeFormat(iso = ISO.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
+    private LocalDate data;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "HH:mm")
-    private Date hora;
+	@DateTimeFormat(iso = ISO.TIME)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HHmm")
+    private LocalTime hora;
 }

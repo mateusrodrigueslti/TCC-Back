@@ -54,4 +54,5 @@ public class Endereco implements Serializable{
     @OneToOne(mappedBy = "endereco")
     @JsonIgnore
     private Ocorrencia ocorrencia;
+
 }

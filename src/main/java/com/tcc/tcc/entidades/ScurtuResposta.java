@@ -12,6 +12,8 @@ public class ScurtuResposta implements Comparable<ScurtuResposta> {
 	private Double result;
 	
 	private Criminoso criminoso;
+	
+	private boolean participouCrime;
 
 	@Override
 	public int compareTo(ScurtuResposta scurtuResposta) {

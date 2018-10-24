@@ -45,9 +45,9 @@ public class RecomendacaoControlador {
 
 	@RequestMapping(value = "/recomendacao", method = RequestMethod.GET)
     @ResponseBody
-    public List<ScurtuResposta> gerarRecomendacaoDeCriminoso(@RequestParam(value="padraoCriminal", required=true) String padraoCriminal){
+    public List<ScurtuResposta> gerarRecomendacaoDeCriminoso(@RequestParam(value="padraoCriminal", required=true) String padraoCriminal, @RequestParam(value="ocorrenciaID", required=true) Long ocorrenciaID){
     	
-        return recomendacaoService.gerar(padraoCriminal);
+        return recomendacaoService.gerar(padraoCriminal, ocorrenciaID);
     }
 	
 	@RequestMapping(value = "/recomendacao", method = RequestMethod.POST)

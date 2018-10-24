@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcc.tcc.entidades.Criminoso;
+import com.tcc.tcc.entidades.Ocorrencia;
 import com.tcc.tcc.entidades.ScurtuResposta;
+import com.tcc.tcc.repositorios.CrimeRepositorio;
 import com.tcc.tcc.repositorios.CriminosoRepositorio;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,9 +31,12 @@ public class RecomendacaoService {
 	@Autowired
 	private CriminosoRepositorio criminosoRepositorio;
 	
+	@Autowired
+	private CrimeRepositorio crimeRepositorio;
+	
 	private ScurtuResposta scurtuResposta;
 
-	public List<ScurtuResposta> gerar(String padraoCriminal) {
+	public List<ScurtuResposta> gerar(String padraoCriminal, Long ocorrenciaID) {
 
 		List<Criminoso> criminosos = (List<Criminoso>) criminosoRepositorio.findAll();
 		
@@ -40,6 +45,16 @@ public class RecomendacaoService {
 		for (Criminoso criminoso : criminosos) {
 
 			ScurtuResposta resposta = compararPadroesCriminais(criminoso.getPadraoAtuacaoCriminal(), padraoCriminal);
+			
+			List<Ocorrencia> ocorrencias = this.crimeRepositorio.buscarCrimes(criminoso.getId());
+			
+			for (Ocorrencia ocorrencia : ocorrencias) {
+				
+				if(ocorrencia.getId() == ocorrenciaID) {
+					resposta.setParticipouCrime(true);
+				}
+			}
+			
 			resposta.setCriminoso(criminoso);
 			scurtuRespostas.add(resposta);
 		}
